@@ -29,3 +29,6 @@ At the same time  the code is looking for the X or Y position of the turtle.
 When X or Y is more then 10, the scripts stops before the turtle hits the wall
 
 <img src="https://user-images.githubusercontent.com/74420584/186103890-ded878c3-1665-47c7-a4a5-a1e0e26fd2ba.png" width=100>
+
+<h2>ROS2_keyboardpublisher.py</h2>
+A small program that based on keyboard input in ROS2 publishes messages on topic cmd_vel
