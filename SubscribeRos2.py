@@ -1,3 +1,9 @@
+'''
+Subscribing to a topic.  In this case /turtle1/pose and showing the content on a screen logger
+
+author : Maarten Dequanter
+'''
+
 import rclpy
 from rclpy.node import Node
 

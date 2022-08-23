@@ -1,4 +1,9 @@
-### `sample_to_show_topic_list.py` ###
+'''
+Showing topics that are currently active.
+
+author : Maarten Dequanter
+'''
+
 import rclpy
 from rclpy.node import Node
 

@@ -1,6 +1,7 @@
 '''
-Making a basic movement with a turtle to show how you can publish a topic.
-In this case cmd_vel topic is published so the turtle makes a linear and angular movement.
+In this script a publish to /turtle1/cmd_vel is performed. 
+At the same time  the code is looking for the X or Y position of the turtle.
+When X or Y is more then 10, the scripts stops before the turtle hits the wall
 
 author : Maarten Dequanter
 '''
@@ -12,6 +13,8 @@ from rclpy.node import Node
 
 from std_msgs.msg import String
 from geometry_msgs.msg import Twist
+from turtlesim.msg import Pose
+
 
 
 import datetime
@@ -27,6 +30,15 @@ class MinimalPublisher(Node):
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.i = 0
 
+        self.subscription = self.create_subscription(
+            Pose,
+            'turtle1/pose',
+            self.handle_turtle_pose,
+            10)
+        self.subscription  # prevent unused variable warning
+
+
+
     def timer_callback(self):
         move_cmd = Twist()
         move_cmd.linear.x = 0.5 + (self.i*0.1)
@@ -34,8 +46,15 @@ class MinimalPublisher(Node):
         self.publisher_.publish(move_cmd)
         self.get_logger().info('Publishing twist')
         self.i += 1
-        if (self.i > 1000) :
-            exit()
+
+
+    def handle_turtle_pose(self, msg):
+        
+        if (msg.x > 10 or msg.y > 10):
+            self.get_logger().info("Stop before hitting the wall")
+            rclpy.shutdown()
+
+
 
 
 
