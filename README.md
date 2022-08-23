@@ -5,6 +5,9 @@ This repository contains code for developing in ROS2
 
 
 <h2>subscribeRos2.py</h2>
+To start run :  
+<code>ros2 run turtlesim turtlesim_node</code>
+
 Subscribing to a topic.  In this case /turtle1/pose and showing the content on a screen logger
 
 <h2>publishRos2.py</h2>
